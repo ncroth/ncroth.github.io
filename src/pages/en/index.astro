@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/main.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import Hero from '../../components/Hero.astro';
+import OpeningHours from '../../components/OpeningHours.astro';
+
+const lang = 'en';
+---
+
+<Layout lang={lang}>
+	<SiteHeader lang={lang} />
+	<main id="main">
+		<Hero lang={lang} />
+		<OpeningHours lang={lang} />
+	</main>
+</Layout>

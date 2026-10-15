@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+/*
+ * Central design tokens. Each variable becomes a Tailwind utility,
+ * e.g. --color-brand -> bg-brand, text-brand, border-brand, ring-brand.
+ * Change a value here to restyle the whole site.
+ */
+@theme {
+	--color-brand: #0f766e;
+	--color-brand-hover: #115e59;
+	--color-brand-soft: #f0fdfa;
+	--color-focus: #0d9488;
+
+	--color-surface: #ffffff;
+	--color-surface-alt: #f8fafc;
+	--color-body: #1e293b;
+	--color-muted: #475569;
+	--color-ink: #0f172a;
+	--color-line: #e2e8f0;
+	--color-line-strong: #cbd5e1;
+}

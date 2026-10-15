@@ -1,17 +1,47 @@
 ---
 import '../styles/global.css';
-const { content } = Astro.props;
+import { defaultLang, languages, type Lang } from '../i18n/ui';
+import { getLangFromPath, getLocalizedPath, useTranslations } from '../i18n/utils';
+
+interface Props {
+	lang?: Lang;
+	title?: string;
+	description?: string;
+	// Set by Astro for Markdown pages that use this layout.
+	content?: { title?: string };
+}
+
+const lang = Astro.props.lang ?? getLangFromPath(Astro.url.pathname);
+const t = useTranslations(lang);
+const { content, description } = Astro.props;
+const title = Astro.props.title ?? content?.title ?? t('site.name');
+const metaDescription = description ?? t('site.description');
+const alternates = (Object.keys(languages) as Lang[]).map((code) => ({
+	code,
+	href: new URL(getLocalizedPath(Astro.url.pathname, code), Astro.site ?? Astro.url).href,
+}));
 ---
 
-<html lang="en">
+<!doctype html>
+<html lang={lang}>
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={metaDescription} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<title>{content.title}</title>
+		{alternates.map(({ code, href }) => <link rel="alternate" hreflang={code} href={href} />)}
+		<link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(Astro.url.pathname, defaultLang), Astro.site ?? Astro.url).href} />
+		<title>{title}</title>
 	</head>
-	<body>
+	<body class="bg-surface text-body antialiased">
+		<a
+			href="#main"
+			class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:font-semibold focus:text-brand-hover focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-focus"
+		>
+			{t('nav.skip')}
+		</a>
 		<slot />
 	</body>
 </html>
+

@@ -1,28 +1,17 @@
 ---
-import '../styles/global.css';
-// Component Imports
-import Button from '../components/Button.astro';
+import Layout from '../layouts/main.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Hero from '../components/Hero.astro';
+import OpeningHours from '../components/OpeningHours.astro';
+import { defaultLang } from '../i18n/ui';
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+const lang = defaultLang;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
-
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">
-				Markdown is also supported...
-			</a>
-		</div>
-	</body>
-</html>
+<Layout lang={lang}>
+	<SiteHeader lang={lang} />
+	<main id="main">
+		<Hero lang={lang} />
+		<OpeningHours lang={lang} />
+	</main>
+</Layout>

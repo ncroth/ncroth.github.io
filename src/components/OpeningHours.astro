@@ -1,0 +1,48 @@
+---
+import { type Lang, type UIKey } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+	lang: Lang;
+}
+
+// `time: null` means closed. Day names are translation keys.
+const hours: { day: UIKey; time: string | null }[] = [
+	{ day: 'day.monday', time: '08:00 – 17:00' },
+	{ day: 'day.tuesday', time: '08:00 – 17:00' },
+	{ day: 'day.wednesday', time: '08:00 – 17:00' },
+	{ day: 'day.thursday', time: '08:00 – 17:00' },
+	{ day: 'day.friday', time: '08:00 – 14:00' },
+	{ day: 'day.saturday', time: null },
+	{ day: 'day.sunday', time: null },
+];
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="opening-hours" aria-labelledby="hours-heading" class="bg-surface-alt py-16 sm:py-20">
+	<div class="mx-auto max-w-5xl px-4 sm:px-6">
+		<h2 id="hours-heading" class="text-2xl font-semibold text-ink sm:text-3xl">{t('hours.title')}</h2>
+		<p class="mt-3 max-w-2xl text-muted">{t('hours.text')}</p>
+		<table class="mt-8 w-full max-w-md border-collapse text-left">
+			<caption class="sr-only">{t('hours.caption')}</caption>
+			<thead>
+				<tr class="border-b border-line-strong">
+					<th scope="col" class="py-3 pr-4 font-semibold text-ink">{t('hours.day')}</th>
+					<th scope="col" class="py-3 font-semibold text-ink">{t('hours.time')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					hours.map(({ day, time }) => (
+						<tr class="border-b border-line">
+							<th scope="row" class="py-3 pr-4 font-medium text-body">{t(day)}</th>
+							<td class="py-3 text-muted">{time ?? t('hours.closed')}</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+</section>

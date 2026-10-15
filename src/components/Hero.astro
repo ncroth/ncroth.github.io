@@ -1,0 +1,25 @@
+---
+import Button from './Button.astro';
+import { type Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section aria-labelledby="hero-heading" class="bg-gradient-to-b from-teal-50 to-white">
+	<div class="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
+		<p class="text-sm font-semibold uppercase tracking-wider text-brand">{t('hero.eyebrow')}</p>
+		<h1 id="hero-heading" class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+			{t('hero.title')}
+		</h1>
+		<p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{t('hero.text')}</p>
+		<div class="mt-10">
+			<Button href="#book">{t('cta.book')}</Button>
+		</div>
+	</div>
+</section>

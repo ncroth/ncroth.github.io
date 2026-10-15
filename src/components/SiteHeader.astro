@@ -1,0 +1,28 @@
+---
+import Button from './Button.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { type Lang } from '../i18n/ui';
+import { getLocalizedPath, useTranslations } from '../i18n/utils';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<header class="border-b border-line bg-surface">
+	<div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
+		<a
+			href={getLocalizedPath('/', lang)}
+			class="rounded-md text-lg font-semibold text-ink transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
+		>
+			{t('site.name')}
+		</a>
+		<div class="flex items-center gap-4">
+			<LanguageSwitcher lang={lang} />
+			<Button href="#book">{t('cta.book')}</Button>
+		</div>
+	</div>
+</header>
