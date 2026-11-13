@@ -40,7 +40,7 @@ const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 							href={href}
 							aria-current={isCurrent ? 'page' : undefined}
 							class:list={[
-								'inline-flex min-h-11 items-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2',
+								'inline-flex min-h-11 items-center rounded-md text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2',
 								isCurrent ? 'text-brand-hover underline underline-offset-4' : 'text-muted hover:text-ink hover:underline',
 							]}
 						>
