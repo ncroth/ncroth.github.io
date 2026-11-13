@@ -17,9 +17,26 @@ const t = useTranslations(lang);
 		<h1 id="hero-heading" class="mx-auto mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
 			{t('hero.title')}
 		</h1>
-		<p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted">{t('hero.text')}</p>
+		<address class="mx-auto mt-6 max-w-2xl text-lg not-italic leading-relaxed text-muted">
+			<div class="space-y-4">
+                <div>
+                    <p>Plaunsche Str. 37</p>
+                    <p>08468 Reichenbach</p>
+                </div>
+                <div>
+                    <p>
+                        {t('contact.email')}: &nbsp;
+                        <a href="mailto:info@neurochirurgie-roth.de" class="break-all rounded-sm text-brand underline underline-offset-4 hover:text-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2">info@neurochirurgie-roth.de</a>
+                    </p>
+                    <p>
+                        {t('contact.phone')}: &nbsp;
+                        <a href="tel:037653093060" class="rounded-sm text-brand underline underline-offset-4 hover:text-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2">037653093060</a>
+                    </p>
+                </div>
+            </div>
+		</address>
 		<div class="mt-10">
-			<Button href="#book">{t('cta.book')}</Button>
+			<!-- <Button href="#book">{t('cta.book')}</Button> -->
 		</div>
 	</div>
 </section>
