@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/main.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { defaultLang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+const lang = defaultLang;
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} title={t('nav.impressum')}>
+	<SiteHeader lang={lang} />
+	<main id="main" class="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
+		<h1 class="text-3xl font-semibold text-ink">{t('nav.impressum')}</h1>
+		<p class="mt-4 text-muted">{t('impressum.placeholder')}</p>
+	</main>
+	<SiteFooter lang={lang} />
+</Layout>

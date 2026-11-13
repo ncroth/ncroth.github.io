@@ -1,6 +1,7 @@
 ---
 import Button from './Button.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import SiteNavigation from './SiteNavigation.astro';
 import { type Lang } from '../i18n/ui';
 import { getLocalizedPath, useTranslations } from '../i18n/utils';
 
@@ -20,9 +21,10 @@ const t = useTranslations(lang);
 		>
 			{t('site.name')}
 		</a>
-		<div class="flex items-center gap-4">
+		<SiteNavigation lang={lang} />
+		<div class="flex flex-wrap items-center gap-4">
 			<LanguageSwitcher lang={lang} />
-			<Button href="#book">{t('cta.book')}</Button>
+			<Button href={`${getLocalizedPath('/', lang)}#book`}>{t('cta.book')}</Button>
 		</div>
 	</div>
 </header>

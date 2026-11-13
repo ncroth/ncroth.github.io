@@ -1,0 +1,41 @@
+---
+import { type Lang, type UIKey } from '../i18n/ui';
+import { getLocalizedPath, useTranslations } from '../i18n/utils';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const links: { path: string; label: UIKey }[] = [
+	{ path: '/', label: 'nav.home' },
+	{ path: '/legal/', label: 'nav.impressum' },
+];
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+---
+
+<nav aria-label={t('nav.main')}>
+	<ul class="flex flex-wrap items-center gap-x-4">
+		{
+			links.map(({ path, label }) => {
+				const href = getLocalizedPath(path, lang);
+				const isCurrent = (href.replace(/\/+$/, '') || '/') === currentPath;
+				return (
+					<li>
+						<a
+							href={href}
+							aria-current={isCurrent ? 'page' : undefined}
+							class:list={[
+								'inline-flex min-h-11 items-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2',
+								isCurrent ? 'text-brand-hover underline underline-offset-4' : 'text-muted hover:text-ink hover:underline',
+							]}
+						>
+							{t(label)}
+						</a>
+					</li>
+				);
+			})
+		}
+	</ul>
+</nav>
