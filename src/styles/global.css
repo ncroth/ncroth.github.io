@@ -6,6 +6,8 @@
  * Change a value here to restyle the whole site.
  */
 @theme {
+	--container-page: 64rem;
+
 	--color-brand: #0f766e;
 	--color-brand-hover: #115e59;
 	--color-brand-soft: #f0fdfa;
