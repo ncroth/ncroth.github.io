@@ -15,8 +15,21 @@ const links: { path: string; label: UIKey }[] = [
 const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 ---
 
-<nav aria-label={t('nav.main')}>
-	<ul class="flex flex-wrap items-center gap-x-4">
+<nav aria-label={t('nav.main')} class="relative">
+	<button
+		id="site-navigation-toggle"
+		type="button"
+		aria-controls="site-navigation-links"
+		aria-expanded="false"
+		class="min-h-11 min-w-11 rounded-md text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 sm:hidden"
+		hidden
+	>
+		<span class="sr-only">{t('nav.menu')}</span>
+		<svg class="mx-auto h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+			<path d="M4 6h16M4 12h16M4 18h16" />
+		</svg>
+	</button>
+	<ul id="site-navigation-links" class="flex flex-col items-start gap-x-4 sm:flex sm:flex-row sm:flex-wrap sm:items-center">
 		{
 			links.map(({ path, label }) => {
 				const href = getLocalizedPath(path, lang);
@@ -39,3 +52,52 @@ const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 		}
 	</ul>
 </nav>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>('#site-navigation-toggle');
+	const links = document.querySelector<HTMLUListElement>('#site-navigation-links');
+	const nav = toggle?.closest('nav');
+
+	if (toggle && links && nav) {
+		const setOpen = (open: boolean) => {
+			toggle.setAttribute('aria-expanded', String(open));
+			links.classList.toggle('hidden', !open);
+			links.classList.toggle('flex', open);
+		};
+
+		setOpen(false);
+		nav.dataset.enhanced = '';
+		toggle.hidden = false;
+		toggle.addEventListener('click', () => {
+			setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+		});
+		nav.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+				setOpen(false);
+				toggle.focus();
+			}
+		});
+		document.addEventListener('click', (event) => {
+			if (event.target instanceof Node && !nav.contains(event.target)) {
+				setOpen(false);
+			}
+		});
+	}
+</script>
+
+<style>
+	@media (width < 40rem) {
+		nav[data-enhanced] ul {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			z-index: 10;
+			min-width: 12rem;
+			padding: 0.5rem 1rem;
+			border: 1px solid var(--color-line);
+			border-radius: 0.5rem;
+			background: var(--color-surface);
+			box-shadow: 0 10px 24px rgb(15 23 42 / 0.15);
+		}
+	}
+</style>

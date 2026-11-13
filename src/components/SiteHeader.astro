@@ -15,12 +15,6 @@ const t = useTranslations(lang);
 
 <header class="border-b border-line bg-surface">
 	<div class="mx-auto flex max-w-page flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
-		<a
-			href={getLocalizedPath('/', lang)}
-			class="rounded-md text-lg font-semibold text-ink transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
-		>
-			{t('site.name')}
-		</a>
 		<SiteNavigation lang={lang} />
 		<div class="flex flex-wrap items-center gap-4">
 			<LanguageSwitcher lang={lang} />
