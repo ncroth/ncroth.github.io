@@ -8,6 +8,8 @@
  */
 @theme {
 	--container-page: 64rem;
+	--font-sans: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+	--font-heading: 'Manrope', ui-sans-serif, system-ui, sans-serif;
 
 	--color-brand: #0f766e;
 	--color-brand-hover: #115e59;
@@ -21,4 +23,10 @@
 	--color-ink: #0f172a;
 	--color-line: #e2e8f0;
 	--color-line-strong: #cbd5e1;
+}
+
+@layer base {
+	h1, h2, h3, h4, h5, h6 {
+		font-family: var(--font-heading);
+	}
 }

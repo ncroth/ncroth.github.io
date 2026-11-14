@@ -28,13 +28,16 @@ const alternates = (Object.keys(languages) as Lang[]).map((code) => ({
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content={metaDescription} />
+		<link rel="preconnect" href="https://fonts.bunny.net" />
+		<link rel="stylesheet" href="https://fonts.bunny.net/css?family=source-sans-3:400,500,600,700&display=swap" />
+		<link rel="stylesheet" href="https://fonts.bunny.net/css?family=manrope:400,500,600,700&display=swap" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		{alternates.map(({ code, href }) => <link rel="alternate" hreflang={code} href={href} />)}
 		<link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(Astro.url.pathname, defaultLang), Astro.site ?? Astro.url).href} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-surface text-body antialiased">
+	<body class="bg-surface font-sans text-body antialiased">
 		<a
 			href="#main"
 			class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:font-semibold focus:text-brand-hover focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-focus"

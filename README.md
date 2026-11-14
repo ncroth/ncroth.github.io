@@ -12,6 +12,13 @@ Astro comes with [Tailwind](https://tailwindcss.com) support out of the box. Thi
 
 For complete setup instructions, please see our [Tailwind Styling Guide](https://docs.astro.build/en/guides/styling/#tailwind).
 
+## Fonts
+
+Source Sans 3 for body text and Manrope for headings are loaded from Bunny Fonts.
+Visitors' browsers request stylesheets and font files from external servers;
+the font host returned by Bunny Fonts may vary. Review this use when preparing
+the privacy notice.
+
 ## Deployment
 
 Pushes to `main` build the site and upload `dist/` to
