@@ -1,19 +1,19 @@
 ---
-import Layout from '../layouts/main.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-import Hero from '../components/Hero.astro';
-import OpeningHours from '../components/OpeningHours.astro';
-import { defaultLang } from '../i18n/ui';
+import Layout from "../layouts/main.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Hero from "../components/Hero.astro";
+import OpeningHours from "../components/OpeningHoursCards.astro";
+import { defaultLang } from "../i18n/ui";
 
 const lang = defaultLang;
 ---
 
 <Layout lang={lang}>
-	<SiteHeader lang={lang} />
-	<main id="main">
-		<Hero lang={lang} />
-		<OpeningHours lang={lang} />
-	</main>
-	<SiteFooter lang={lang} />
+    <SiteHeader lang={lang} />
+    <main id="main">
+        <Hero lang={lang} />
+        <OpeningHours lang={lang} />
+    </main>
+    <SiteFooter lang={lang} />
 </Layout>

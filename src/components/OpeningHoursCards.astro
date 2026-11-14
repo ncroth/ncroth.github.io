@@ -1,0 +1,20 @@
+---
+import { type Lang } from "../i18n/ui";
+import OpeningHours2026 from "./OpeningHours2026.astro";
+import OpeningHours2027 from "./OpeningHours2027.astro";
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<div id="opening-hours" class="bg-surface-alt py-16 sm:py-20">
+    <div class="mx-auto max-w-page px-4 sm:px-6">
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <OpeningHours2026 lang={lang} />
+            <OpeningHours2027 lang={lang} />
+        </div>
+    </div>
+</div>
