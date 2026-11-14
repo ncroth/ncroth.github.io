@@ -2,6 +2,8 @@
 import Layout from '../../layouts/main.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
+import LegalNoticeContent from '../../components/LegalNoticeContent.astro';
+import * as legalNotice from '../../content/legal/en.md';
 import { useTranslations } from '../../i18n/utils';
 
 const lang = 'en';
@@ -13,6 +15,9 @@ const t = useTranslations(lang);
 	<main id="main" class="mx-auto max-w-page px-4 py-16 sm:px-6 sm:py-20">
 		<h1 class="text-3xl font-semibold text-ink">{t('nav.impressum')}</h1>
 		<p class="mt-4 text-muted">{t('impressum.placeholder')}</p>
+		<LegalNoticeContent>
+			<legalNotice.Content />
+		</LegalNoticeContent>
 	</main>
 	<SiteFooter lang={lang} />
 </Layout>
