@@ -8,15 +8,14 @@ export type Lang = keyof typeof languages;
 export const defaultLang: Lang = 'de';
 
 const de = {
-    'site.name': 'Dummy Neurochirurgie-Praxis',
-    'site.description': 'Neurochirurgische Praxis (Platzhaltertext)',
+    'site.name': 'Neurochirurgie-Praxis Roth',
+    'site.description': 'Neurochirurgische Praxis Roth',
     'nav.skip': 'Zum Hauptinhalt springen',
     'nav.language': 'Sprache wählen',
     'nav.main': 'Hauptnavigation',
     'nav.menu': 'Menü',
     'nav.home': 'Startseite',
     'nav.impressum': 'Impressum',
-    'impressum.placeholder': 'Platzhalter: Das Impressum muss vor der Veröffentlichung ergänzt werden.',
     'cta.book': 'Termin buchen',
     'hero.eyebrow': 'Neurochirurgie',
     'hero.title': 'Facharztpraxis André Roth',
@@ -43,15 +42,14 @@ const de = {
 export type UIKey = keyof typeof de;
 
 const en: Record<UIKey, string> = {
-    'site.name': 'Dummy Neurosurgery Practice',
-    'site.description': 'Neurosurgery practice (placeholder text)',
+    'site.name': 'Neurosurgery Practice Roth',
+    'site.description': 'Neurosurgery Practice Roth',
     'nav.skip': 'Skip to main content',
     'nav.language': 'Choose language',
     'nav.main': 'Main navigation',
     'nav.menu': 'Menu',
     'nav.home': 'Home',
     'nav.impressum': 'Legal notice',
-    'impressum.placeholder': 'Placeholder: The legal notice must be completed before publication.',
     'cta.book': 'Book appointment',
     'hero.eyebrow': 'Neurosurgery',
     'hero.title': 'André Roth Specialist Practice',
